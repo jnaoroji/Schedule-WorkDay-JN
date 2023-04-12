@@ -97,3 +97,44 @@ You are required to submit the following for review:
 
 - - -
 © 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+
+# 05 Third-Party APIs: Jenny's Work Day Scheduler
+
+## Description
+
+My task as an employee with a busy schedule is to create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery. This app will help to manage my time more efficiently.
+
+You'll need to use the [Day.js](https://day.js.org/en/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Day.js in the browser.
+
+## Usage
+
+The following animation demonstrates the application functionality:
+
+<!-- @TODO: create ticket to review/update image) -->
+![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/05-third-party-apis-homework-demo.gif)
+
+To play the quiz, click the Start Quiz Button!
+
+You can get there by clicking this link to the deployed site: https://jnaoroji.github.io/WebAPIs-Code-QuizJN/
+
+## Screenshot
+
+The following image shows my web application's appearance and functionality:
+
+![The Code Quiz application displays a blue button to "Start Quiz".](assets/screenshot.png)
+
+## Credits
+
+* https://developer.mozilla.org
+* This gif was used as the predominant guideline for this quiz.
+* ![This Gif was used as the predominant guideline for this quiz.](assets/04-web-apis-homework-demo.gif)
+* used as template for interval timer: file:///Users/jennynaoroji/bootcamp/bootcamp-repo/UADEL-VIRT-FSF-PT-03-2023-U-LOLC/04-Web-APIs/01-Activities/09-Ins_Timers-Intervals/index.html
+* Used as template for index.html and index2.html:file:///Users/jennynaoroji/bootcamp/bootcamp-repo/UADEL-VIRT-FSF-PT-03-2023-U-LOLC/04-Web-APIs/01-Activities/22-Stu_Local-Storage/Solved/index.html
+
+
+## License
+
+Please refer to the LICENSE in the repo.
+
+
+
