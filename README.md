@@ -132,6 +132,7 @@ The following image shows my web application's appearance and functionality:
 * Used as template for index.html and index2.html:file:///Users/jennynaoroji/bootcamp/bootcamp-repo/UADEL-VIRT-FSF-PT-03-2023-U-LOLC/04-Web-APIs/01-Activities/22-Stu_Local-Storage/Solved/index.html
 
 
+
 ## License
 
 Please refer to the LICENSE in the repo.
