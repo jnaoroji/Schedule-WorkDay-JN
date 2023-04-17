@@ -60,15 +60,11 @@ $(document).ready(function() {
     saveBtn.on('click', function (event) {
       event.preventDefault();
       
-      timeBlockId = $(this).parent().attr("id");
+      timeBlockId = $(this).parent().attr("id").split('-')[1];
       console.log(timeBlockId);
-      var timeBlockSplit = timeBlockId.split('-');
-      console.log("time block split array = " + timeBlockSplit);
-      timeBlockHour = timeBlockSplit[1];
-      console.log("time block hour only = " + timeBlockHour);
       var userInput = $(this).siblings(".description").val();
       console.log(userInput);
-      localStorage.setItem(timeBlockHour, userInput);
+      localStorage.setItem(timeBlockId, userInput);
     
     });
 });  
