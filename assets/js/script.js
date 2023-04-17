@@ -3,10 +3,9 @@ var description = $('.description');
 var timeBlock = $('.time-block');
 var timeBlockId = $(timeBlock).attr("id");
 var timeBlockId;
-var row = $('.row');
 var timeBlockHour;
 var userInput;
-var previousUserInput = "";
+
 
 var currentHour = 14;
 // var currentHour = dayjs().hour();
@@ -15,32 +14,29 @@ var currentHour = 14;
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-// $('textarea').each(function() {
-  //   // Get the id of the textarea element
-  //   const id = $(this).attr('id');
-  //   // Get the saved value from localStorage using the id as the key
-  //   const value = localStorage.getItem(id);
-  //   // If a saved value exists, set the value of the textarea element
-  //   if (value !== null) {
-  //     $(this).val(value);
-  //   }
-
 $(document).ready(function() {
-   // TODO: Add code to display the current date in the header of the page.
+   
+  // TODO: Add code to display the current date in the header of the page.
   var today = dayjs();
   $('#currentDay').text(today.format('dddd, MMM D, YYYY'));
   
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-
-  
+  // TODO: Add code to get any user input that was saved in localStorage and set
+  // the values of the corresponding textarea elements. HINT: How can the id
+  // attribute of each time-block be used to do this?
   $(timeBlock).each(function () {
-    var timeBlockId = $(this).attr("id").split("-")[1];
+    var timeBlockId = $(this).attr('id').split('-')[1];
     console.log("Time Block Id = " + timeBlockId);
+    var userInput = localStorage.getItem(timeBlockId);
+    console.log("user input = " + userInput);
 
+    if (userInput !== null) {
+    $(this).children(".description").val(userInput);
+    }
+    // TODO: Add code to apply the past, present, or future class to each time
+    // block by comparing the id to the current hour. HINTS: How can the id
+    // attribute of each time-block be used to conditionally add or remove the
+    // past, present, and future classes? How can Day.js be used to get the
+    // current hour in 24-hour time?
     if (parseInt(timeBlockId) < currentHour) {
       $(this).removeClass("present future").addClass("past");
     } else if (parseInt(timeBlockId) == currentHour) {
@@ -48,10 +44,9 @@ $(document).ready(function() {
     } else {
       $(this).removeClass("past present").addClass("future");
     }
-    
 
-    });
-  
+  });
+
 
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
@@ -63,7 +58,7 @@ $(document).ready(function() {
     // Add a click event listener to all save buttons, find the parent id of save button
     // save the value of the text description as user input, save timeblock id as key in local storage
     saveBtn.on('click', function (event) {
-      
+      event.preventDefault();
       
       timeBlockId = $(this).parent().attr("id");
       console.log(timeBlockId);
@@ -73,33 +68,8 @@ $(document).ready(function() {
       console.log("time block hour only = " + timeBlockHour);
       var userInput = $(this).siblings(".description").val();
       console.log(userInput);
-      
       localStorage.setItem(timeBlockHour, userInput);
-      
-      $(timeBlock).each(function () {
-        event.preventDefault();
-        timeBlockId = $(this).attr('id');
-        userInput = localStorage.getItem("timeBlockHour");
-        console.log(userInput);
-
-        if (userInput !== null) {
-        $(this).siblings(".description").val(userInput);
-        console.log("GET " + userInput);
-        }
-      });
-
-      // $('textarea').each(function() {
-  //   // Get the id of the textarea element
-  //   const id = $(this).attr('id');
-  //   // Get the saved value from localStorage using the id as the key
-  //   const value = localStorage.getItem(id);
-  //   // If a saved value exists, set the value of the textarea element
-  //   if (value !== null) {
-  //     $(this).val(value);
-  //   }
+    
     });
 });  
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
   
