@@ -26,6 +26,20 @@ var currentHour = 14;
   //   }
 
 $(document).ready(function() {
+    var calendar = JSON.parse(localStorage.getItem("calendar"));
+    console.log(calendar);
+   
+    // // Get the id of the textarea element
+    // const timeBlockId = $(this).attr('id');
+    // // Get the saved value from localStorage using the id as the key
+    // const userInput = localStorage.getItem(timeBlockId);
+    // // If a saved value exists, set the value of the textarea element
+    // if (userInput !== null) {
+    //   $(this).val(userInput);
+    // }
+  // });
+
+
    // TODO: Add code to display the current date in the header of the page.
   var today = dayjs();
   $('#currentDay').text(today.format('dddd, MMM D, YYYY'));
@@ -40,6 +54,11 @@ $(document).ready(function() {
   $(timeBlock).each(function () {
     var timeBlockId = $(this).attr("id").split("-")[1];
     console.log("Time Block Id = " + timeBlockId);
+    
+    if (parseInt(timeBlockId) == calendar.timeBlock[1]){
+    console.log("Hello!");
+    $(this).siblings(".description").val("hello!");
+    } 
 
     if (parseInt(timeBlockId) < currentHour) {
       $(this).removeClass("present future").addClass("past");
@@ -63,7 +82,7 @@ $(document).ready(function() {
     // Add a click event listener to all save buttons, find the parent id of save button
     // save the value of the text description as user input, save timeblock id as key in local storage
     saveBtn.on('click', function (event) {
-      
+      event.preventDefault();
       
       timeBlockId = $(this).parent().attr("id");
       console.log(timeBlockId);
@@ -73,33 +92,31 @@ $(document).ready(function() {
       console.log("time block hour only = " + timeBlockHour);
       var userInput = $(this).siblings(".description").val();
       console.log(userInput);
+      var calendar = {
+        timeBlock: timeBlockSplit,
+        input: userInput,
+      }
+      localStorage.setItem('calendar',JSON.stringify(calendar));
       
-      localStorage.setItem(timeBlockHour, userInput);
-      
-      $(timeBlock).each(function () {
-        event.preventDefault();
-        timeBlockId = $(this).attr('id');
-        userInput = localStorage.getItem("timeBlockHour");
-        console.log(userInput);
-
-        if (userInput !== null) {
-        $(this).siblings(".description").val(userInput);
-        console.log("GET " + userInput);
-        }
-      });
-
-      // $('textarea').each(function() {
-  //   // Get the id of the textarea element
-  //   const id = $(this).attr('id');
-  //   // Get the saved value from localStorage using the id as the key
-  //   const value = localStorage.getItem(id);
-  //   // If a saved value exists, set the value of the textarea element
-  //   if (value !== null) {
-  //     $(this).val(value);
-  //   }
     });
 });  
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   
+ 
+
+  
+
+  
+  
+  
+  
+  
+  
+
+
+  
+
+  
+ 
